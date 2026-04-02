@@ -1,9 +1,6 @@
-import Navbar from '@/app/components/navbar';
+import { redirect } from "next/navigation";
+import { DEFAULT_LOCALE } from "@/config/cockpit";
 
 export default function Home() {
-  return (
-    <main className="background-radial-gradient min-h-screen min-w-screen">
-      <Navbar />
-    </main>
-  );
+  redirect(`/${DEFAULT_LOCALE}`);
 }

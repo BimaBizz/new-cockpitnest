@@ -1,0 +1,197 @@
+[
+    {
+        "text": "Introduction",
+        "children": [
+          {
+            "text": "About",
+            "link": "/introduction/about"
+          }
+        ]
+    },
+    {
+        "text": "Autopilot",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/autopilot/introduction"
+          },
+          {
+            "text": "Configuration",
+            "link": "/autopilot/configuration"
+          },
+          {
+            "text": "Built-in Tools",
+            "link": "/autopilot/tools"
+          },
+          {
+            "text": "Custom Tools",
+            "link": "/autopilot/custom-tools"
+          }
+        ]
+    },
+    {
+        "text": "CloudStorage",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/cloudstorage/introduction"
+          }
+        ]
+    },
+    {
+        "text": "Detektivo",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/detektivo/introduction"
+          },
+          {
+            "text": "API",
+            "link": "/detektivo/api"
+          }
+        ]
+    },
+    {
+        "text": "Inbox",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/inbox/introduction"
+          },
+          {
+            "text": "Security & Spam",
+            "link": "/inbox/security"
+          },
+          {
+            "text": "Notifications",
+            "link": "/inbox/notifications"
+          },
+          {
+            "text": "Frontend",
+            "link": "/inbox/frontend"
+          },
+          {
+            "text": "API & Events",
+            "link": "/inbox/api"
+          }
+        ]
+    },
+    {
+        "text": "Layout",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/layout/introduction"
+          },
+          {
+            "text": "Core Components",
+            "link": "/layout/components"
+          },
+          {
+            "text": "Custom Components",
+            "link": "/layout/custom-components"
+          },
+          {
+            "text": "Rendering",
+            "link": "/layout/rendering"
+          }
+        ]
+    },
+    {
+        "text": "Lokalize",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/lokalize/introduction"
+          },
+          {
+            "text": "API",
+            "link": "/lokalize/api"
+          }
+        ]
+    },
+    {
+        "text": "Pages",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/pages/introduction"
+          },
+          {
+            "text": "API",
+            "link": "/pages/api"
+          }
+        ]
+    },
+    {
+        "text": "Personi",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/personi/introduction"
+          },
+          {
+            "text": "Variants",
+            "link": "/personi/variants"
+          },
+          {
+            "text": "Scheduling",
+            "link": "/personi/scheduling"
+          },
+          {
+            "text": "API Reference",
+            "link": "/personi/api"
+          },
+          {
+            "text": "Frontend",
+            "link": "/personi/frontend"
+          }
+        ]
+    },
+    {
+        "text": "Sync",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/sync/introduction"
+          },
+          {
+            "text": "Targets & Resources",
+            "link": "/sync/targets"
+          },
+          {
+            "text": "Operations",
+            "link": "/sync/operations"
+          },
+          {
+            "text": "Automation",
+            "link": "/sync/automation"
+          },
+          {
+            "text": "Advanced",
+            "link": "/sync/advanced"
+          }
+        ]
+    },
+    {
+        "text": "Webhooks",
+        "children": [
+          {
+            "text": "Introduction",
+            "link": "/webhooks/introduction"
+          },
+          {
+            "text": "Events & Payloads",
+            "link": "/webhooks/events"
+          },
+          {
+            "text": "Integrations",
+            "link": "/webhooks/integrations"
+          },
+          {
+            "text": "Advanced",
+            "link": "/webhooks/advanced"
+          }
+        ]
+    }
+]

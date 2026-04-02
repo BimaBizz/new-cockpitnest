@@ -1,0 +1,52 @@
+[
+  {
+    "text": "Development",
+    "children": [
+      {
+        "text": "Creating Custom Addons",
+        "link": "/creating-custom-modules",
+        "children": []
+      },
+      {
+        "text": "Creating Custom Fields",
+        "link": "/creating-custom-fields",
+        "children": []
+      },
+      {
+        "text": "Using Cockpit as Library",
+        "link": "/using-cockpit-as-library",
+        "children": []
+      },
+      {
+        "text": "File-Based API Endpoints",
+        "link": "/creating-file-based-api-endpoints",
+        "children": []
+      }
+    ]
+  },
+  {
+    "text": "Integration",
+    "children": [
+      {
+        "text": "Cockpit with Next.js",
+        "link": "/cockpit-with-nextjs",
+        "children": []
+      },
+      {
+        "text": "Cockpit with Nuxt.js",
+        "link": "/cockpit-with-nuxtjs",
+        "children": []
+      },
+      {
+        "text": "Cockpit with Remix",
+        "link": "/cockpit-with-remix",
+        "children": []
+      },
+      {
+        "text": "Cockpit with Laravel",
+        "link": "/cockpit-with-laravel",
+        "children": []
+      }
+    ]
+  }
+]
