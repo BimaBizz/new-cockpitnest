@@ -18,7 +18,7 @@ const MULTI_LANGUAGE_ENABLED = parseBoolean(process.env.COCKPIT_MULTI_LANGUAGE_E
 
 const isStaticAsset = (pathname) => /\.[^/]+$/.test(pathname);
 
-export function middleware(request) {
+export function proxy(request) {
   if (MULTI_LANGUAGE_ENABLED) {
     return NextResponse.next();
   }
