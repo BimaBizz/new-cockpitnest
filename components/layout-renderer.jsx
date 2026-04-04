@@ -42,7 +42,7 @@ function RenderComponent({ item, locale }) {
           : Array.isArray(data.layout)
             ? data.layout
             : [];
-  console.log("Rendering component:", { rawComponent, data, nestedComponents });
+  // console.log("Rendering component:", { rawComponent, data, nestedComponents });
   
   // LayoutComponent: wrapper for nested components
   if (rawComponent === "layoutcomponent" || rawComponent === "layout-component" || rawComponent === "layout-components") {
