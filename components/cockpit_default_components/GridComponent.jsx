@@ -10,7 +10,7 @@ const getGridClass = (colWidth) => {
 
 export default function GridComponent({ item, data, locale, LayoutRenderer }) {
   return (
-    <div className={cn("grid grid-cols-1 gap-5", getGridClass(data.colWidth), data.class)}>
+    <div className={cn("grid grid-cols-1 gap-5 lg:gap-8", getGridClass(data.colWidth), data.class)}>
       {(item.columns || []).map((column, index) => (
         <div key={`${item.id || "grid"}-${index}`} className="space-y-5">
           <LayoutRenderer components={column?.components || []} locale={locale} />

@@ -60,6 +60,10 @@ export default async function DynamicPage({ params }) {
 
   // console.log("[DynamicPage] layoutComponents:", layoutComponents);
 
+  if (layoutComponents.length) {
+    return <LayoutRenderer components={layoutComponents} locale={locale} />;
+  }
+
   return (
     <article className="space-y-6">
       <header className="space-y-2">

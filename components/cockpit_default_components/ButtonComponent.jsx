@@ -12,7 +12,7 @@ export default function ButtonComponent({ data, locale }) {
     <Link
       href={href}
       target={data.target || "_self"}
-      className="inline-flex items-center rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-background"
+      className="inline-flex items-center rounded-lg bg-foreground px-5 py-2.5 mr-4 text-sm font-medium text-card"
     >
       {data.caption || "Open"}
     </Link>
