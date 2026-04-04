@@ -55,7 +55,7 @@ export default function HeroImageComponent({ data }) {
       <div className="absolute inset-0 rounded-3xl bg-green-400/20 blur-[100px]" />
 
       <div
-        className="relative overflow-hidden rounded-3xl bg-card/80 p-6 shadow-2xl backdrop-blur-xl h-100 lg:h-[600px]"
+        className="relative overflow-hidden rounded-3xl bg-card/80 p-6 shadow-green-800 shadow-2xl backdrop-blur-xl h-100 lg:h-[600px]"
         role="img"
         aria-label={imageAlt || "preview"}
         style={{ backgroundImage: `url(${backgroundSrc})`, backgroundSize: "cover", backgroundPosition: "center" }}
