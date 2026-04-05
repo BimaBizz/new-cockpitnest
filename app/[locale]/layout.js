@@ -39,9 +39,9 @@ export default async function LocaleLayout({ children, params }) {
   );
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-5 py-4">
+    <div className="min-h-screen bg-background text-foreground p-4">
+      <header className="sticky top-5 z-50 rounded-full bg-card/80 backdrop-blur mx-auto w-6xl">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-11 py-4">
           <Link
             href={localePath(locale)}
             className="font-semibold tracking-tight"
@@ -63,6 +63,7 @@ export default async function LocaleLayout({ children, params }) {
               </Link>
             ))}
           </nav>
+          {COCKPIT_MULTI_LANGUAGE_ENABLED ? (
           <div className="flex items-center gap-2 text-xs">
             {COCKPIT_MULTI_LANGUAGE_ENABLED
               ? LOCALES.map((entry) => (
@@ -83,6 +84,7 @@ export default async function LocaleLayout({ children, params }) {
               </span>
             ) : null}
           </div>
+          ): null}
         </div>
       </header>
       <main className="mx-auto w-full max-w-6xl px-5 py-8">{children}</main>
