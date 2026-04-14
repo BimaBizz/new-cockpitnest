@@ -14,8 +14,11 @@ import SectionTitleComponent from "./SectionTitleComponent";
 import TagsComponent from "./TagsComponent";
 import JobTitleComponent from "./JobTitleComponent";
 import HeroImage from "./HeroImageComponent";
+import PortfolioItemsComponent from "./PortfolioItemsComponent";
 
 export default function CustomComponentRenderer({ rawComponent, item, data, nestedComponents, locale, LayoutRenderer }) {
+  const isCollectionPageItems = Array.isArray(data?.items) && data.items.some((entry) => entry && typeof entry === "object" && (entry.item || entry.route));
+
   if (rawComponent === "sectiontitle") {
     return <SectionTitleComponent data={data} />;
   }
@@ -30,6 +33,20 @@ export default function CustomComponentRenderer({ rawComponent, item, data, nest
 
   if (rawComponent === "heroimage") {
     return <HeroImage data={data} />;
+  }
+
+  if (
+    rawComponent === "portofolioitems" ||
+    rawComponent === "portfolioitems" ||
+    rawComponent === "portofolio-items" ||
+    rawComponent === "portfolio-items" ||
+    rawComponent === "collectionpageitems" ||
+    rawComponent === "collection-page-items" ||
+    rawComponent === "collectionpageitem" ||
+    rawComponent === "collection-page-item" ||
+    isCollectionPageItems
+  ) {
+    return <PortfolioItemsComponent data={data} />;
   }
 
   // If component has nested content or HTML, render it as fallback
