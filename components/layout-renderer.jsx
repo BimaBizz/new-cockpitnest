@@ -83,7 +83,7 @@ function RenderComponent({ item, locale }) {
   }
 
   if (rawComponent === "section") {
-    return <SectionComponent data={data} nestedComponents={nestedComponents} locale={locale} LayoutRenderer={LayoutRenderer} />;
+    return <SectionComponent item={item} data={data} nestedComponents={nestedComponents} locale={locale} LayoutRenderer={LayoutRenderer} />;
   }
 
   if (rawComponent === "grid") {
@@ -98,7 +98,7 @@ function RenderComponent({ item, locale }) {
   return <CustomComponentRenderer rawComponent={rawComponent} item={item} data={data} nestedComponents={nestedComponents} locale={locale} LayoutRenderer={LayoutRenderer} />;
 }
 
-export default function LayoutRenderer({ components = [], locale }) {
+export default function LayoutRenderer({ components = [], locale, className }) {
   // console.log("LayoutRenderer called with components count:", components.length, "components:", components);
   
   if (!Array.isArray(components) || !components.length) {
@@ -107,7 +107,7 @@ export default function LayoutRenderer({ components = [], locale }) {
   }
 
   return (
-    <div className="space-y-5">
+    <div className={cn("space-y-5", className)}>
       {components.map((item, index) => (
         <RenderComponent key={item?.id || `${item?.component || "component"}-${index}`} item={item} locale={locale} />
       ))}
