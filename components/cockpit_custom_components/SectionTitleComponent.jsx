@@ -28,7 +28,7 @@ export default function SectionTitleComponent({ data }) {
     <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold">
       {parts.map((part, index) => (
         part.toLowerCase() === highlight.toLowerCase() ? (
-          <span key={`${part}-${index}`} className="text-green-500">
+          <span key={`${part}-${index}`} className="text-green-700">
             {part}
           </span>
         ) : (

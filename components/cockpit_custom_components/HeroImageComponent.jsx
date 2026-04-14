@@ -62,10 +62,10 @@ export default function HeroImageComponent({ data }) {
       >
         <div className="absolute inset-0 bg-background/40" />
         <div className="absolute inset-0 rounded-3xl bg-green-500/10 blur-[80px]" />
-
-        <div className="absolute bottom-5 left-5 right-5 mt-52 flex items-center justify-between rounded-xl bg-card/50 p-3 backdrop-blur-lg">
+        <div className="absolute h-36 w-full bottom-0 left-0 z-30 bg-gradient-to-b from-transparent to-white/60"/>
+        <div className="absolute z-30 bottom-5 left-5 right-5 mt-52 flex items-center justify-between rounded-xl bg-card/50 p-3 backdrop-blur-lg">
           <div>
-            <p className="text-xs text-muted-foreground">CURRENT TECH USED</p>
+            <p className="text-xs text-green-700">CURRENT TECH USED</p>
             <p className="text-sm font-medium">{currentTech}</p>
           </div>
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-white">
