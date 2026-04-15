@@ -82,7 +82,7 @@ export default function PortfolioItemsComponent({ data }) {
   return (
     <section className="space-y-8">
       <div className="max-w-3xl space-y-3">
-        <h2 className="text-3xl font-semibold tracking-tight text-green-700 sm:text-4xl">Selected Works</h2>
+        <h1 className="font-semibold tracking-tight text-green-700 text-4xl md:text-5xl">Selected Works</h1>
         <p className="text-base leading-7 text-muted-foreground max-w-xl">A curation of high-performance web applications built with modern frameworks and pixel-perfect attention to detail.</p>
       </div>
 
@@ -143,7 +143,7 @@ export default function PortfolioItemsComponent({ data }) {
                 {techs.length ? (
                   <div className="flex flex-wrap gap-2 mt-2">
                     {techs.map((tech, techIndex) => (
-                      <span key={`${tech}-${techIndex}`} className="rounded-sm border border-border bg-background/60 px-3 py-1 text-xs font-medium text-foreground uppercase tracking-wide">
+                      <span key={`${tech}-${techIndex}`} className="rounded-sm border border-border bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-wide text-green-700">
                         {tech}
                       </span>
                     ))}

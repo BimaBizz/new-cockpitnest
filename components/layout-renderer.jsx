@@ -107,7 +107,7 @@ export default function LayoutRenderer({ components = [], locale, className }) {
   }
 
   return (
-    <div className={cn("space-y-5", className)}>
+    <div className={cn(className)}>
       {components.map((item, index) => (
         <RenderComponent key={item?.id || `${item?.component || "component"}-${index}`} item={item} locale={locale} />
       ))}
