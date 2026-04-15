@@ -39,7 +39,7 @@ export default function SectionComponent({ item, data, nestedComponents, locale,
     <section
       className={cn(
         "space-y-5",
-        isFullHeight && "min-h-[100vh]",
+        isFullHeight && "min-h-screen",
         isCentered && "flex flex-col justify-center",
         data.class,
       )}
