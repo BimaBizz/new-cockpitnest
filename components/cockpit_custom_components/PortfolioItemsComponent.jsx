@@ -132,7 +132,7 @@ export default function PortfolioItemsComponent({ data }) {
 
               <div className="space-y-6 p-6">
                 <div className="">
-                  <h3 className="text-xl font-semibold tracking-tight text-foreground">{portfolioItem?.title || "Untitled project"}</h3>
+                  <h3 className="text-2xl font-bold tracking-tight text-foreground">{portfolioItem?.title || "Untitled project"}</h3>
                 </div>
 
                 {excerpt ? <p className="text-sm leading-6 text-muted-foreground">{excerpt}</p> : null}
