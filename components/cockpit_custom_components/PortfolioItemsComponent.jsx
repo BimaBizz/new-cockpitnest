@@ -108,12 +108,9 @@ export default function PortfolioItemsComponent({ data }) {
                 : "";
           const excerpt = shortText(portfolioItem?.content || "", 120);
 
-          return (
-            <article
-              key={portfolioItem?._id || portfolioItem?.slug || `${title}-${index}`}
-              className={cn("group overflow-hidden rounded-3xl border border-border bg-card/90 shadow-lg shadow-black/5 transition-all duration-300 hover:-translate-y-1 hover:border-green-500/40 hover:shadow-green-500/10")}
-            >
-              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+          const cardContent = (
+            <article className="overflow-hidden rounded-3xl border border-border bg-card/90 shadow-lg shadow-black/5 transition-all duration-300 hover:-translate-y-1 hover:border-green-500/40 hover:shadow-green-500/10">
+              <div className="relative aspect-16/10 overflow-hidden bg-muted">
                 {imageSrc ? (
                   <img
                     src={imageSrc}
@@ -122,12 +119,12 @@ export default function PortfolioItemsComponent({ data }) {
                     loading="lazy"
                   />
                 ) : (
-                  <div className="flex h-full items-center justify-center bg-gradient-to-br from-green-500/15 via-card to-amber-500/10 text-sm font-medium text-muted-foreground">
+                  <div className="flex h-full items-center justify-center bg-linear-to-br from-green-500/15 via-card to-amber-500/10 text-sm font-medium text-muted-foreground">
                     No preview image
                   </div>
                 )}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/20 to-transparent" />
                 <div className="absolute left-4 top-4 rounded-full border border-green-500/20 bg-background/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-green-600 backdrop-blur">
                   Project
                 </div>
@@ -151,6 +148,20 @@ export default function PortfolioItemsComponent({ data }) {
                 ) : null}
               </div>
             </article>
+          );
+
+          return route ? (
+            <Link
+              key={portfolioItem?._id || portfolioItem?.slug || `${title}-${index}`}
+              href={route}
+              className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              {cardContent}
+            </Link>
+          ) : (
+            <div key={portfolioItem?._id || portfolioItem?.slug || `${title}-${index}`} className="group">
+              {cardContent}
+            </div>
           );
         })}
       </div>
