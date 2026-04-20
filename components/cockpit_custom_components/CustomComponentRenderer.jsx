@@ -17,6 +17,7 @@ import HeroImage from "./HeroImageComponent";
 import PortfolioItemsComponent from "./PortfolioItemsComponent";
 import CardComponent from "./CardComponent";
 import TerminalComponent from "./TerminalComponent";
+import FormComponent from "./FormComponent";
 
 export default function CustomComponentRenderer({ rawComponent, item, data, nestedComponents, locale, LayoutRenderer }) {
   const isCollectionPageItems = Array.isArray(data?.items) && data.items.some((entry) => entry && typeof entry === "object" && (entry.item || entry.route));
@@ -39,6 +40,10 @@ export default function CustomComponentRenderer({ rawComponent, item, data, nest
 
   if (rawComponent === "card" || rawComponent === "cards") {
     return <CardComponent data={data} />;
+  }
+
+  if (rawComponent === "form") {
+    return <FormComponent data={data} />;
   }
 
   if (rawComponent === "terminal") {

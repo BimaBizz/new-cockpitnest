@@ -32,6 +32,7 @@ const parseLocaleMap = (value) => {
 };
 
 export const COCKPIT_API_URL = process.env.COCKPIT_API_URL?.replace(/\/$/, "") || "";
+export const PUBLIC_COCKPIT_API_URL = process.env.NEXT_PUBLIC_COCKPIT_API_URL?.replace(/\/$/, "") || "";
 export const COCKPIT_API_KEY = process.env.COCKPIT_API_KEY || "";
 export const COCKPIT_PREVIEW_API_KEY = process.env.COCKPIT_PREVIEW_API_KEY || COCKPIT_API_KEY;
 
