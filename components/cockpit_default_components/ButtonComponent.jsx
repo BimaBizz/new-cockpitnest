@@ -12,7 +12,7 @@ export default function ButtonComponent({ data, locale }) {
     <Link
       href={href}
       target={data.target || "_self"}
-      className="inline-flex items-center rounded-full bg-foreground px-6 py-4 mr-4 text-sm font-medium text-card"
+      className="inline-flex items-center rounded-full bg-gradient-to-r from-green-700 to-green-500 p-3 text-white font-semibold hover:bg-gradient-to-r hover:from-green-800 hover:to-green-600 px-6 py-4 mr-4 text-sm font-medium text-card"
     >
       {data.caption || "Open"}
     </Link>

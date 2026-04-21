@@ -5,6 +5,8 @@ import { COCKPIT_MULTI_LANGUAGE_ENABLED, LOCALES } from "@/config/cockpit";
 import { PRO_PAGES_ENABLED } from "@/config/cockpit";
 import { getNavigation, getSiteSettings } from "@/lib/cockpit-queries";
 import { isSupportedLocale, localePath } from "@/lib/i18n";
+import FooterComponent from "@/components/cockpit_custom_components/FooterComponent";
+import Navbar from "@/components/Navbar";
 
 function flattenNavigation(items = []) {
   return items.flatMap((item) => {
@@ -29,70 +31,40 @@ export default async function LocaleLayout({ children, params }) {
   }
 
   const { isEnabled: preview } = await draftMode();
-  const [settings, menuTree] = await Promise.all([
+  const [settings, menuTree, sosmedMenu] = await Promise.all([
     getSiteSettings({ locale, preview }),
     getNavigation({ locale, preview }),
+    (await import("@/lib/cockpit-queries")).getSosmedMenu(),
   ]);
 
   const menuItems = flattenNavigation(menuTree).filter(
     (item) => item.title && item.slug,
   );
 
+  // Extract links from sosmedMenu (must be after sosmedMenu is defined)
+  const sosmedLinks = Array.isArray(sosmedMenu?.links) ? sosmedMenu.links : [];
+
   return (
     <div className="min-h-screen bg-background text-foreground relative">
       <main className="mx-auto w-full">
-        <header className="sticky top-5 z-50 rounded-full bg-card/80 backdrop-blur mx-auto w-6xl">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-11 py-4">
-          <Link
-            href={localePath(locale)}
-            className="font-semibold tracking-tight"
-          >
-            {settings.site_title || "Cockpit Site"}
-          </Link>
-          <nav className="flex items-center gap-4 text-sm">
-            {PRO_PAGES_ENABLED ? (
-              null
-            ) : (
-              <Link href={localePath(locale, "blog")}>Blog</Link>
-            )}
-            {menuItems.slice(0, 4).map((item) => (
-              <Link
-                key={item._id || item.slug}
-                href={localePath(locale, item.slug)}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </nav>
-          {COCKPIT_MULTI_LANGUAGE_ENABLED ? (
-          <div className="flex items-center gap-2 text-xs">
-            {COCKPIT_MULTI_LANGUAGE_ENABLED
-              ? LOCALES.map((entry) => (
-                  <Link
-                    key={entry}
-                    href={localePath(entry)}
-                    className={
-                      entry === locale ? "font-semibold" : "opacity-70"
-                    }
-                  >
-                    {entry.toUpperCase()}
-                  </Link>
-                ))
-              : null}
-            {preview ? (
-              <span className="rounded bg-amber-200 px-2 py-1 text-amber-950">
-                Draft
-              </span>
-            ) : null}
-          </div>
-          ): null}
-        </div>
-      </header>
+        <Navbar
+          settings={settings}
+          menuItems={menuItems}
+          locale={locale}
+          locales={LOCALES}
+          preview={preview}
+          proPagesEnabled={PRO_PAGES_ENABLED}
+          multiLanguageEnabled={COCKPIT_MULTI_LANGUAGE_ENABLED}
+        />
         {children}
       </main>
-      <footer className="border-t border-border px-5 py-6 text-center text-sm opacity-70">
-        {settings.site_description || "Powered by Cockpit CMS"}
-      </footer>
+      {!PRO_PAGES_ENABLED ? (
+        <div className="border-t border-border px-5 py-6 text-center text-sm opacity-70">
+          {settings.site_description || "Powered by Cockpit CMS"}
+        </div>
+      ) : (
+        <FooterComponent links={sosmedLinks} />
+      )}
     </div>
   );
 }

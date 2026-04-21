@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { PUBLIC_COCKPIT_API_URL } from "@/config/cockpit";
+import { SendHorizontal } from "lucide-react";
 
 function getInputName(label, idx) {
   // Use label as name, fallback to index
@@ -17,7 +18,11 @@ export default function FormComponent({ data }) {
   }
 
   if (status === "success") {
-    return <div className="rounded-lg bg-green-100 text-green-800 px-4 py-3 mt-4">Thank you! Your message has been sent.</div>;
+    return (
+      <div className="rounded-lg bg-green-100 text-green-800 px-4 py-3 mt-4">
+        Thank you! Your message has been sent.
+      </div>
+    );
   }
 
   async function handleSubmit(e) {
@@ -48,7 +53,10 @@ export default function FormComponent({ data }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-xl bg-gray-50 p-10 md:p-16 rounded-4xl shadow-xl mt-5 mx-auto">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6 max-w-xl bg-gray-50 p-10 md:p-16 rounded-4xl shadow-xl mt-5 mx-auto"
+    >
       {inputs.map((input, idx) => {
         const name = getInputName(input.label, idx);
         const label = input.label || `Field ${idx + 1}`;
@@ -57,20 +65,48 @@ export default function FormComponent({ data }) {
 
         return (
           <div key={name} className="space-y-4">
-            <label className="block text-foreground uppercase text-xs font-bold tracking-wide" htmlFor={name}>{label}</label>
+            <label
+              className="block text-foreground uppercase text-xs font-bold tracking-wide"
+              htmlFor={name}
+            >
+              {label}
+            </label>
             {type === "textarea" ? (
-              <textarea name={name} id={name} placeholder={info} className="w-full rounded-xl border-none px-3 py-2 bg-card placeholder:text-slate-500 placeholder:text-xs placeholder:capitalize h-32"  required />
+              <textarea
+                name={name}
+                id={name}
+                placeholder={info}
+                className="w-full rounded-xl border-none px-3 py-2 bg-card placeholder:text-slate-500 placeholder:text-xs placeholder:capitalize h-32"
+                required
+              />
             ) : type === "checkbox" ? (
-              <input type="checkbox" name={name} id={name} className="mr-2 align-middle" />
+              <input
+                type="checkbox"
+                name={name}
+                id={name}
+                className="mr-2 align-middle"
+              />
             ) : (
-              <input type={type} name={name} id={name} placeholder={info} className="w-full border-none rounded-xl border px-3 py-2 bg-card placeholder:text-slate-500 placeholder:text-xs placeholder:capitalize" required />
+              <input
+                type={type}
+                name={name}
+                id={name}
+                placeholder={info}
+                className="w-full border-none rounded-xl border px-3 py-2 bg-card placeholder:text-slate-500 placeholder:text-xs placeholder:capitalize"
+                required
+              />
             )}
           </div>
         );
       })}
       {error && <div className="text-red-500 text-sm">{error}</div>}
-      <button type="submit" className="inline-flex items-center justify-center rounded-xl w-full bg-gradient-to-r from-green-500 to-green-700 p-3 text-white font-semibold hover:bg-gradient-to-r hover:from-green-600 hover:to-green-800 disabled:opacity-60" disabled={status === "submitting"}>
-        {status === "submitting" ? "Sending..." : "Send"}
+      <button
+        type="submit"
+        className="flex items-center justify-center rounded-2xl w-full bg-gradient-to-r from-green-700 to-green-500 p-4 text-white font-semibold hover:bg-gradient-to-r hover:from-green-800 hover:to-green-600 disabled:opacity-60"
+        disabled={status === "submitting"}
+      >
+        {status === "submitting" ? "Sending..." : "Transmit Message"}
+        <SendHorizontal className="ml-2" size={18} />
       </button>
     </form>
   );
