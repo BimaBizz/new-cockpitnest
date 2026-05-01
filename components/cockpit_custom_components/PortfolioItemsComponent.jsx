@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { COCKPIT_API_URL } from "@/config/cockpit";
 
@@ -112,11 +113,13 @@ export default function PortfolioItemsComponent({ data }) {
             <article className="overflow-hidden rounded-3xl border border-border bg-card/90 shadow-lg shadow-black/5 transition-all duration-300 hover:-translate-y-1 hover:border-green-500/40 hover:shadow-green-500/10">
               <div className="relative aspect-16/10 overflow-hidden bg-muted">
                 {imageSrc ? (
-                  <img
+                  <Image
                     src={imageSrc}
                     alt={imageAlt}
+                    fill
+                    sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    loading="lazy"
+                    unoptimized
                   />
                 ) : (
                   <div className="flex h-full items-center justify-center bg-linear-to-br from-green-500/15 via-card to-amber-500/10 text-sm font-medium text-muted-foreground">

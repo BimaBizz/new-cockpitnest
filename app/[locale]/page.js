@@ -43,17 +43,14 @@ export default async function LocaleHomePage({ params }) {
 
   if (PRO_PAGES_ENABLED) {
     const homePage = await getPageBySlug({ locale, slug: "/", preview }).catch(() => null);
-    
-    // console.log("[HomePage] homePage object keys:", homePage ? Object.keys(homePage) : null);
-    // console.log("[HomePage] homePage object:", JSON.stringify(homePage, null, 2));
-    
+
     if (homePage) {
       const pageTitle = homePage.title || homePage.seo?.title || homePage.seo_title;
       const pageExcerpt = homePage.excerpt || homePage.seo?.description || homePage.seo_description;
       const htmlContent = homePage.content || homePage.body || "";
-      
+
       const hasHtmlContent = typeof htmlContent === "string" && htmlContent.trim().length > 0;
-      
+
       const layoutComponents = Array.isArray(homePage?.layout)
         ? homePage.layout
         : Array.isArray(homePage?.content)
@@ -61,13 +58,11 @@ export default async function LocaleHomePage({ params }) {
           : Array.isArray(homePage?.body)
             ? homePage.body
             : [];
-      
-      // console.log("[HomePage] layoutComponents:", layoutComponents);
-      
+
       if (layoutComponents.length) {
-        return <LayoutRenderer components={layoutComponents} locale={locale} />
+        return <LayoutRenderer components={layoutComponents} locale={locale} />;
       }
-      
+
       if (hasHtmlContent || pageTitle || pageExcerpt) {
         return (
           <article className="space-y-6">
@@ -77,7 +72,7 @@ export default async function LocaleHomePage({ params }) {
                 {pageExcerpt ? <p className="max-w-3xl text-base opacity-80">{pageExcerpt}</p> : null}
               </header>
             ) : null}
-            
+
             {hasHtmlContent ? (
               <div
                 className="prose prose-neutral max-w-none dark:prose-invert"

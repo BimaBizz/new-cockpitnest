@@ -18,10 +18,7 @@ import CustomComponentRenderer from "@/components/cockpit_custom_components/Cust
 const isObject = (value) => value && typeof value === "object" && !Array.isArray(value);
 
 function RenderComponent({ item, locale }) {
-  // console.log("RenderComponent called with item:", item);
-  
   if (!item || !isObject(item)) {
-    // console.log("Item invalid or not object, returning null");
     return null;
   }
 
@@ -42,8 +39,7 @@ function RenderComponent({ item, locale }) {
           : Array.isArray(data.layout)
             ? data.layout
             : [];
-  // console.log("Rendering component:", { rawComponent, data, nestedComponents });
-  
+
   // LayoutComponent: wrapper for nested components
   if (rawComponent === "layoutcomponent" || rawComponent === "layout-component" || rawComponent === "layout-components") {
     return <LayoutRenderer components={nestedComponents} locale={locale} />;
@@ -99,10 +95,7 @@ function RenderComponent({ item, locale }) {
 }
 
 export default function LayoutRenderer({ components = [], locale, className }) {
-  // console.log("LayoutRenderer called with components count:", components.length, "components:", components);
-  
   if (!Array.isArray(components) || !components.length) {
-    // console.log("Components invalid or empty, returning null");
     return null;
   }
 

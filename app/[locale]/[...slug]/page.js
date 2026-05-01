@@ -43,9 +43,6 @@ export default async function DynamicPage({ params }) {
   const slugPath = slug.join("/");
   const page = await getPageBySlug({ locale, slug: slugPath, preview });
 
-  // console.log("[DynamicPage] page object keys:", page ? Object.keys(page) : null);
-  // console.log("[DynamicPage] page object:", JSON.stringify(page, null, 2));
-
   if (!page) {
     notFound();
   }
@@ -57,8 +54,6 @@ export default async function DynamicPage({ params }) {
       : Array.isArray(page.body)
         ? page.body
         : [];
-
-  // console.log("[DynamicPage] layoutComponents:", layoutComponents);
 
   if (layoutComponents.length) {
     return <LayoutRenderer components={layoutComponents} locale={locale} />;

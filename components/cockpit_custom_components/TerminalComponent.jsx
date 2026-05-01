@@ -23,22 +23,38 @@ export default function TerminalComponent({ data }) {
   const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
-    if (!text) {
-      setTyped("");
-      setIsTyping(false);
-      return;
-    }
-
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setTyped(text);
-      setIsTyping(false);
-      return;
-    }
-
     const typingDelay = 14;
     const restartDelay = 10000;
     let timeoutId;
     let isCancelled = false;
+
+    if (!text) {
+      timeoutId = window.setTimeout(() => {
+        setTyped("");
+        setIsTyping(false);
+      }, 0);
+
+      return () => {
+        isCancelled = true;
+        if (timeoutId) {
+          window.clearTimeout(timeoutId);
+        }
+      };
+    }
+
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      timeoutId = window.setTimeout(() => {
+        setTyped(text);
+        setIsTyping(false);
+      }, 0);
+
+      return () => {
+        isCancelled = true;
+        if (timeoutId) {
+          window.clearTimeout(timeoutId);
+        }
+      };
+    }
 
     const startCycle = () => {
       if (isCancelled) return;
@@ -66,7 +82,7 @@ export default function TerminalComponent({ data }) {
       timeoutId = window.setTimeout(typeNext, typingDelay);
     };
 
-    startCycle();
+    timeoutId = window.setTimeout(startCycle, 0);
 
     return () => {
       isCancelled = true;
@@ -81,21 +97,23 @@ export default function TerminalComponent({ data }) {
   }
 
   return (
-       <section className="h-130 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-lg flex flex-col">
+      <section className="h-130 flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-lg">
       <div className="flex items-center justify-between gap-2 border-b border-slate-800 px-4 py-3 bg-slate-900">
         <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-red-500" aria-hidden="true" />
-            <span className="h-3 w-3 rounded-full bg-amber-400" aria-hidden="true" />
-            <span className="h-3 w-3 rounded-full bg-emerald-500" aria-hidden="true" />
+          <span className="h-3 w-3 rounded-full bg-red-500" aria-hidden="true" />
+          <span className="h-3 w-3 rounded-full bg-amber-400" aria-hidden="true" />
+          <span className="h-3 w-3 rounded-full bg-emerald-500" aria-hidden="true" />
         </div>
         <span className="ml-3 text-xs tracking-wide text-slate-300">zsh — 80x24</span>
       </div>
 
-      <div className="terminal-content flex-1 p-4 md:p-6 text-sm md:text-base leading-7 text-emerald-300 font-mono overflow-x-auto overflow-y-auto">
+      <div className="terminal-content flex-1 overflow-x-auto overflow-y-auto p-4 font-mono text-sm leading-7 text-emerald-300 md:p-6 md:text-base">
         <pre className="whitespace-pre-wrap wrap-break-word">
           <code>
             {typed}
-            <span className={`ml-0.5 inline-block terminal-cursor ${isTyping ? "text-emerald-200" : "text-emerald-300"}`}><div className="bg-emerald-300 w-3 h-1 ml-1"/></span>
+            <span className={`terminal-cursor ml-0.5 inline-block ${isTyping ? "text-emerald-200" : "text-emerald-300"}`}>
+              <span className="ml-1 block h-1 w-3 bg-emerald-300" />
+            </span>
           </code>
         </pre>
       </div>

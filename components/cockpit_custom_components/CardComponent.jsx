@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function CardComponent({ data }) {
   const title = typeof data?.title === "string" && data.title.trim() ? data.title.trim() : "";
   const subTitle = typeof data?.subTitle === "string" && data.subTitle.trim() ? data.subTitle.trim() : "";
@@ -9,11 +11,13 @@ export default function CardComponent({ data }) {
   return (
     <article className="rounded-2xl bg-gray-100 border p-6 md:p-8 shadow-sm">
       {!isImageHidden && imagePath ? (
-        <img
+        <Image
           src={imagePath}
           alt={title || "Card image"}
+          width={48}
+          height={48}
           className="mb-4 h-12 w-12 rounded-md object-cover"
-          loading="lazy"
+          unoptimized
         />
       ) : null}
 
