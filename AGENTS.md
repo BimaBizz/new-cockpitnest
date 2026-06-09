@@ -55,29 +55,6 @@ docs-main/
 2. `docs-main/core/api/content/index.md` — API konten utama
 3. Bagian fitur yang relevan dengan task kamu
 
-### 2. Baca Dokumentasi Fitur di `cockpitnest-docs/`
-
-Folder `cockpitnest-docs/` berisi panduan spesifik cara mengelola aplikasi **ini** dengan Cockpit.  
-Selalu cek folder ini sebelum mengimplementasi fitur baru:
-
-```
-cockpitnest-docs/
-├── 01-authentication.md    → Setup API key & env vars
-├── 02-content-api.md       → Fetch konten dari koleksi & singleton
-├── 03-assets.md            → Gambar & file
-├── 04-pages-menus.md       → Halaman & navigasi
-├── 05-lokalize.md          → Terjemahan & i18n
-├── 06-inbox.md             → Form submission
-├── 07-detektivo.md         → Full-text search
-├── 08-personi.md           → Personalisasi konten
-└── 09-webhooks.md          → Revalidasi & integrasi eksternal
-```
-
-**Jika dokumentasi untuk fitur yang kamu butuhkan belum ada** di `cockpitnest-docs/`:
-- Buat file baru dengan format yang konsisten (lihat file yang sudah ada)
-- Tulis singkat, fokus pada cara penggunaan di proyek ini
-- Tambahkan contoh kode TypeScript yang siap pakai
-
 ### 3. Aturan Wajib untuk Kode Cockpit
 
 ```bash
@@ -91,7 +68,6 @@ COCKPIT_API_KEY=...
 
 - **Gunakan `lib/cockpit.ts`** sebagai wrapper tunggal untuk semua panggilan API
 - **Jangan** hardcode URL Cockpit atau API key di manapun selain `.env.local`
-- **Gunakan `next: { revalidate: N }`** untuk caching di Server Components
 - **Gunakan filter MongoDB syntax** untuk query konten: `filter={field: 'value'}`
 - **Gunakan `populate: 1`** jika field berisi referensi ke konten lain
 <!-- END:cockpit-agent-rules -->
@@ -133,19 +109,6 @@ npx tsc --noEmit  # Type check
 3. **Jangan** berasumsi tentang struktur konten — cek `docs-main/core/concepts/content/`
 4. **Jangan** abaikan deprecation notice dari Next.js
 5. **Jangan** commit file `.env.local`
-6. **Jangan** membuat file di `cockpitnest-docs/` tanpa mengikuti format yang ada
 
 ---
 
-## ✅ Checklist Sebelum Selesai
-
-- [ ] Sudah baca dokumentasi di `docs-main/` yang relevan
-- [ ] Sudah cek atau buat file di `cockpitnest-docs/` yang sesuai
-- [ ] Tidak ada API key atau URL yang ter-hardcode
-- [ ] Semua Cockpit API calls melalui `lib/cockpit.ts`
-- [ ] Tidak ada error TypeScript (`npx tsc --noEmit`)
-- [ ] Tidak ada `console.log` debug yang tertinggal
-
----
-
-*Diperbarui: lihat git log untuk riwayat perubahan.*
